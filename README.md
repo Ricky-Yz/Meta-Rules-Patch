@@ -31,6 +31,10 @@
 ```
 https://raw.githubusercontent.com/Ricky-Yz/mihomo-rule-data/main/Rules-dat/usmart.mrs
 ```
+或任意`.list` 文件，例如 `direct.list` 的 Raw 链接如下：
+```
+https://raw.githubusercontent.com/Ricky-Yz/mihomo-rule-data/main/Rules-dat/direct.list
+```
 
 #### 2. 配置片段示例 (以 Clash/Mihomo 配置为例)
 
@@ -50,6 +54,7 @@ rules:
 #设立锚点
 rule-anchor:
   domain: &domain { type: http, interval: 86400, behavior: domain, format: mrs }
+  text-domain: &text-domain { type: http, interval: 86400, behavior: domain, format: text }
 #规则集
 rule-providers:
   usmart_domain:
@@ -57,10 +62,10 @@ rule-providers:
       <<: *domain,
       url: "https://raw.githubusercontent.com/Ricky-Yz/mihomo-rule-data/main/Rules-dat/usmart.mrs",
     }
-  xxx_domain:
+  direct_domain:
     {
-      <<: *domain,
-      url: "https://raw.githubusercontent.com/Ricky-Yz/mihomo-rule-data/main/Rules-dat/xxx.mrs",
+      <<: *text-domain,
+      url: "https://raw.githubusercontent.com/Ricky-Yz/mihomo-rule-data/main/Rules-dat/direct.list",
     }
 ...
 ```
